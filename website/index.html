@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"
+  manifest="z-way-small.appcache"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="zoom, width=800">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Nieuwstraat 56B</title>
+
+  <script>
+    const small = true;
+  </script>
+  <!-- Public available JS libs -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery.dateformat.js"></script>
+  <script src="js/Base64.js"></script>
+
+  <!-- Our own JS extensions -->
+  <script src="js/jquery.triggerpath.js"></script>
+
+  <!-- Our code -->
+  <script src="js/z-way-demo.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="lcarssdk/css/lcarssdk.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/addons/scrollButton/scrollButton.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/addons/levelBar/levelBar.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/templates/bracket/bracket.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/templates/dialog/dialog.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/templates/framing/framing.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/templates/button/button.css">
+  <link rel="stylesheet" type="text/css" href="lcarssdk/themes/theme_ussNotAffiliated.css">
+  <style>
+    .overlay {
+      z-index: 10;
+    }
+    img {
+      /* Set rules to fill background */
+      min-height: 100%;
+
+      /* Set up proportionate scaling */
+      width: 100%;
+      height: auto;
+
+      /* Set up positioning */
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      z-index: 10;
+    }
+
+    .minWidth {
+      min-width: 25px!important;
+    }
+  </style>
+</head>
+<body>
+<!-- login wachtscherm
+  <div id="overlay" class="overlay"><img src="lcarssdk/2401679414_5bdbf2fc75_o.png"/></div>
+-->
+  <div class="wrapper column flexv flexch">
+    <div class="row header flexh">
+      <!--Header Column-->
+      <div class="column flexv">
+        <div class="elbow bottom-left bg-green-3 flexh default horizontal" style="height: 125px; " data-label="">
+          <div class="bar">
+            <div class="block"></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="wrapper flexch flexv">
+        <!--Header Content-->
+        <div class="wrapper content flexcv">
+          <div class="wrapper flexh button-wrap">
+           <div class="complexButton flexch">
+              <div class="button pill flexch bg-blue-1" data-label="Bart's Domotica" id="livingSet"></div>
+            </div>
+         </div>
+        </div>
+        <!--Header Bar Row-->
+        <div class="row frame flexh">      
+          <div class="bar bg-green-3 flexch"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row main flexh">
+      <!--Body Button Column-->
+      <div class=" column flexv">
+        <div class="elbow top-left bg-blue-3 default horizontal" data-label="" style="height: 100px">
+          <div class="bar">
+            <div class="block"></div>
+          </div>
+        </div>
+        <div class="button bg-green-3" data-altlabel="Lights"></div>
+        <div class="button bg-blue-3" data-altlabel="TV"></div>
+        <div class="button bg-green-3" data-altlabel="Thermostat"></div>
+        <div class="button bg-blue-3" data-altlabel="Thermosmart"></div>
+        <div class="button bg-green-3"></div>
+        <div class="button bg-green-2"><br/><br/><span style="color: white; margin-left: 10px;" class="updateTimeTick"></span></div>
+      </div>
+      <!--Body Bar Row-->
+      <div class="wrapper flexch flexv">
+        <div class="row frame flexh">
+          <div class="bar bg-blue-3"></div>
+          <div class="bar bg-blue-3"></div>
+          <div class="bar bg-green-3 flexch"></div>
+          <div class="bar bg-blue-3"></div>
+        </div>        <!--Body Content-->
+        <div class="wrapper content flexcv" style=" overflow:auto;">
+          <div class="wrapper flexch flexv">
+            <div class="wrapper" style="height: 10px;"></div>
+            <div class="row">
+              <div class="button minWidth bg-green-4 flexch left" onclick="location.href='cgi-bin/goodmorning.sh';" style="cursor: pointer;" data-label="Goodmorning" device="5" instance="0" value="21" id="heatSlaapkamer21"></div>
+              <div class="button minWidth bg-green-4 flexch right" onclick="location.href='cgi-bin/bedtime.sh';" style="cursor: pointer;" data-label="Goodnight" id="heatSlaapkamerOn"></div>
+            </div>
+            <div class="wrapper" style="height: 5px;"></div>
+            <div class="row">
+                <div class="button bg-blue-2 pill flexch" onclick="location.href='cgi-bin/lightson.sh';" style="cursor: pointer;" data-label="On" device="15" instance="0" value="true" id="lightson"></div>
+                <div class="button bg-blue-2 pill flexch" onclick="location.href='cgi-bin/lightsoff.sh';" style="cursor: pointer;" data-label="Off" device="15" instance="0" value="false" id="lightsff"></div>
+            </div>
+            <div class="wrapper" style="height: 5px;"></div>
+            <div class="row">
+                <div class="button bg-blue-2 pill flexch" onclick="location.href='cgi-bin/tvon.sh';" style="cursor: pointer;" data-label="On" device="15" instance="0" value="true" id="tvon"></div>
+                <div class="button bg-blue-2 pill flexch" onclick="location.href='cgi-bin/tvoff.sh';" style="cursor: pointer;" data-label="Off" device="15" instance="0" value="false" id="tvoff"></div>
+            </div>
+            <div class="wrapper" style="height: 5px;"></div>
+            <div class="row">
+                <a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart.sh?temp=16" data-label="16"></a>
+                <a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart.sh?temp=18" data-label="18"></a>
+		<a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart.sh?temp=19" data-label="19"></a>
+		<a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart.sh?temp=20" data-label="20"></a>
+		<a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart.sh?temp=21" data-label="21"></a>
+		<a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart.sh?temp=22" data-label="22"></a>
+            </div>
+            <div class="wrapper" style="height: 5px;"></div>
+            <div class="row">
+		<a class="button bg-blue-2 pill flexch" href="cgi-bin/thermosmart_switch.sh" data-label="Resume normale schedule"></a>
+                <div class="complexbutton pill bg-blue-2 pill"></div>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
